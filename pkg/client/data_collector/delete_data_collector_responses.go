@@ -22,8 +22,8 @@ type DeleteDataCollectorReader struct {
 func (o *DeleteDataCollectorReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteDataCollectorOK()
+	case 204:
+		result := NewDeleteDataCollectorNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +48,23 @@ func (o *DeleteDataCollectorReader) ReadResponse(response runtime.ClientResponse
 	}
 }
 
-// NewDeleteDataCollectorOK creates a DeleteDataCollectorOK with default headers values
-func NewDeleteDataCollectorOK() *DeleteDataCollectorOK {
-	return &DeleteDataCollectorOK{}
+// NewDeleteDataCollectorNoContent creates a DeleteDataCollectorNoContent with default headers values
+func NewDeleteDataCollectorNoContent() *DeleteDataCollectorNoContent {
+	return &DeleteDataCollectorNoContent{}
 }
 
-/*DeleteDataCollectorOK handles this case with default header values.
+/*DeleteDataCollectorNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
-type DeleteDataCollectorOK struct {
+type DeleteDataCollectorNoContent struct {
 }
 
-func (o *DeleteDataCollectorOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/data-collectors/{id}][%d] deleteDataCollectorOK ", 200)
+func (o *DeleteDataCollectorNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/data-collectors/{id}][%d] deleteDataCollectorNoContent ", 204)
 }
 
-func (o *DeleteDataCollectorOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteDataCollectorNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

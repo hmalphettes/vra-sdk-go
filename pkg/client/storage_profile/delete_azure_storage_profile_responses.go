@@ -22,8 +22,8 @@ type DeleteAzureStorageProfileReader struct {
 func (o *DeleteAzureStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteAzureStorageProfileOK()
+	case 204:
+		result := NewDeleteAzureStorageProfileNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +48,23 @@ func (o *DeleteAzureStorageProfileReader) ReadResponse(response runtime.ClientRe
 	}
 }
 
-// NewDeleteAzureStorageProfileOK creates a DeleteAzureStorageProfileOK with default headers values
-func NewDeleteAzureStorageProfileOK() *DeleteAzureStorageProfileOK {
-	return &DeleteAzureStorageProfileOK{}
+// NewDeleteAzureStorageProfileNoContent creates a DeleteAzureStorageProfileNoContent with default headers values
+func NewDeleteAzureStorageProfileNoContent() *DeleteAzureStorageProfileNoContent {
+	return &DeleteAzureStorageProfileNoContent{}
 }
 
-/*DeleteAzureStorageProfileOK handles this case with default header values.
+/*DeleteAzureStorageProfileNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
-type DeleteAzureStorageProfileOK struct {
+type DeleteAzureStorageProfileNoContent struct {
 }
 
-func (o *DeleteAzureStorageProfileOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-azure/{id}][%d] deleteAzureStorageProfileOK ", 200)
+func (o *DeleteAzureStorageProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-azure/{id}][%d] deleteAzureStorageProfileNoContent ", 204)
 }
 
-func (o *DeleteAzureStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteAzureStorageProfileNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

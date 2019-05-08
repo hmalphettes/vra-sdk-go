@@ -22,8 +22,8 @@ type DeleteNetworkProfileReader struct {
 func (o *DeleteNetworkProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteNetworkProfileOK()
+	case 204:
+		result := NewDeleteNetworkProfileNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +48,23 @@ func (o *DeleteNetworkProfileReader) ReadResponse(response runtime.ClientRespons
 	}
 }
 
-// NewDeleteNetworkProfileOK creates a DeleteNetworkProfileOK with default headers values
-func NewDeleteNetworkProfileOK() *DeleteNetworkProfileOK {
-	return &DeleteNetworkProfileOK{}
+// NewDeleteNetworkProfileNoContent creates a DeleteNetworkProfileNoContent with default headers values
+func NewDeleteNetworkProfileNoContent() *DeleteNetworkProfileNoContent {
+	return &DeleteNetworkProfileNoContent{}
 }
 
-/*DeleteNetworkProfileOK handles this case with default header values.
+/*DeleteNetworkProfileNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
-type DeleteNetworkProfileOK struct {
+type DeleteNetworkProfileNoContent struct {
 }
 
-func (o *DeleteNetworkProfileOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/network-profiles/{id}][%d] deleteNetworkProfileOK ", 200)
+func (o *DeleteNetworkProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/network-profiles/{id}][%d] deleteNetworkProfileNoContent ", 204)
 }
 
-func (o *DeleteNetworkProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteNetworkProfileNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

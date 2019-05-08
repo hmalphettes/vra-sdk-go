@@ -59,7 +59,7 @@ DeleteProject deletes project
 
 Delete project with a given id
 */
-func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectOK, *DeleteProjectNoContent, error) {
+func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteProjectParams()
@@ -78,15 +78,9 @@ func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectOK, *
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *DeleteProjectOK:
-		return value, nil, nil
-	case *DeleteProjectNoContent:
-		return nil, value, nil
-	}
-	return nil, nil, nil
+	return result.(*DeleteProjectNoContent), nil
 
 }
 

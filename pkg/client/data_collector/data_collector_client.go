@@ -59,7 +59,7 @@ DeleteDataCollector deletes data collector
 
 Delete Data Collector with a given id
 */
-func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) (*DeleteDataCollectorOK, error) {
+func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) (*DeleteDataCollectorNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteDataCollectorParams()
@@ -80,7 +80,7 @@ func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) (*Delete
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteDataCollectorOK), nil
+	return result.(*DeleteDataCollectorNoContent), nil
 
 }
 

@@ -59,7 +59,7 @@ DeleteFlavorProfile deletes flavor profile
 
 Delete flavor profile with a given id
 */
-func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*DeleteFlavorProfileOK, error) {
+func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*DeleteFlavorProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteFlavorProfileParams()
@@ -80,7 +80,7 @@ func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*Delete
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteFlavorProfileOK), nil
+	return result.(*DeleteFlavorProfileNoContent), nil
 
 }
 

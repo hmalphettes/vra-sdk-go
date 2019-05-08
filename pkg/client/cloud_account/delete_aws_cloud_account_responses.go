@@ -22,8 +22,8 @@ type DeleteAwsCloudAccountReader struct {
 func (o *DeleteAwsCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteAwsCloudAccountOK()
+	case 204:
+		result := NewDeleteAwsCloudAccountNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +48,23 @@ func (o *DeleteAwsCloudAccountReader) ReadResponse(response runtime.ClientRespon
 	}
 }
 
-// NewDeleteAwsCloudAccountOK creates a DeleteAwsCloudAccountOK with default headers values
-func NewDeleteAwsCloudAccountOK() *DeleteAwsCloudAccountOK {
-	return &DeleteAwsCloudAccountOK{}
+// NewDeleteAwsCloudAccountNoContent creates a DeleteAwsCloudAccountNoContent with default headers values
+func NewDeleteAwsCloudAccountNoContent() *DeleteAwsCloudAccountNoContent {
+	return &DeleteAwsCloudAccountNoContent{}
 }
 
-/*DeleteAwsCloudAccountOK handles this case with default header values.
+/*DeleteAwsCloudAccountNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
-type DeleteAwsCloudAccountOK struct {
+type DeleteAwsCloudAccountNoContent struct {
 }
 
-func (o *DeleteAwsCloudAccountOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-aws/{id}][%d] deleteAwsCloudAccountOK ", 200)
+func (o *DeleteAwsCloudAccountNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-aws/{id}][%d] deleteAwsCloudAccountNoContent ", 204)
 }
 
-func (o *DeleteAwsCloudAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteAwsCloudAccountNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

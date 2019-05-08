@@ -59,7 +59,7 @@ DeleteNetworkProfile deletes network profile
 
 Delete network profile with a given id
 */
-func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*DeleteNetworkProfileOK, error) {
+func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*DeleteNetworkProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNetworkProfileParams()
@@ -80,7 +80,7 @@ func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*Dele
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteNetworkProfileOK), nil
+	return result.(*DeleteNetworkProfileNoContent), nil
 
 }
 

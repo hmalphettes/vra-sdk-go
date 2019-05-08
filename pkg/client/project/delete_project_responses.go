@@ -22,13 +22,6 @@ type DeleteProjectReader struct {
 func (o *DeleteProjectReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteProjectOK()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
-
 	case 204:
 		result := NewDeleteProjectNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -50,30 +43,16 @@ func (o *DeleteProjectReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 
+	case 409:
+		result := NewDeleteProjectConflict()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
-}
-
-// NewDeleteProjectOK creates a DeleteProjectOK with default headers values
-func NewDeleteProjectOK() *DeleteProjectOK {
-	return &DeleteProjectOK{}
-}
-
-/*DeleteProjectOK handles this case with default header values.
-
-successful operation
-*/
-type DeleteProjectOK struct {
-}
-
-func (o *DeleteProjectOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/projects/{id}][%d] deleteProjectOK ", 200)
-}
-
-func (o *DeleteProjectOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
 }
 
 // NewDeleteProjectNoContent creates a DeleteProjectNoContent with default headers values
@@ -135,6 +114,27 @@ func (o *DeleteProjectNotFound) Error() string {
 }
 
 func (o *DeleteProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteProjectConflict creates a DeleteProjectConflict with default headers values
+func NewDeleteProjectConflict() *DeleteProjectConflict {
+	return &DeleteProjectConflict{}
+}
+
+/*DeleteProjectConflict handles this case with default header values.
+
+Conflict, when the project is in use
+*/
+type DeleteProjectConflict struct {
+}
+
+func (o *DeleteProjectConflict) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/projects/{id}][%d] deleteProjectConflict ", 409)
+}
+
+func (o *DeleteProjectConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

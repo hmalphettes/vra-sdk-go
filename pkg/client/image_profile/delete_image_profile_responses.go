@@ -22,8 +22,8 @@ type DeleteImageProfileReader struct {
 func (o *DeleteImageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteImageProfileOK()
+	case 204:
+		result := NewDeleteImageProfileNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +48,23 @@ func (o *DeleteImageProfileReader) ReadResponse(response runtime.ClientResponse,
 	}
 }
 
-// NewDeleteImageProfileOK creates a DeleteImageProfileOK with default headers values
-func NewDeleteImageProfileOK() *DeleteImageProfileOK {
-	return &DeleteImageProfileOK{}
+// NewDeleteImageProfileNoContent creates a DeleteImageProfileNoContent with default headers values
+func NewDeleteImageProfileNoContent() *DeleteImageProfileNoContent {
+	return &DeleteImageProfileNoContent{}
 }
 
-/*DeleteImageProfileOK handles this case with default header values.
+/*DeleteImageProfileNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
-type DeleteImageProfileOK struct {
+type DeleteImageProfileNoContent struct {
 }
 
-func (o *DeleteImageProfileOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/image-profiles/{id}][%d] deleteImageProfileOK ", 200)
+func (o *DeleteImageProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/image-profiles/{id}][%d] deleteImageProfileNoContent ", 204)
 }
 
-func (o *DeleteImageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteImageProfileNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

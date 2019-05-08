@@ -22,8 +22,8 @@ type DeleteFlavorProfileReader struct {
 func (o *DeleteFlavorProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteFlavorProfileOK()
+	case 204:
+		result := NewDeleteFlavorProfileNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +48,23 @@ func (o *DeleteFlavorProfileReader) ReadResponse(response runtime.ClientResponse
 	}
 }
 
-// NewDeleteFlavorProfileOK creates a DeleteFlavorProfileOK with default headers values
-func NewDeleteFlavorProfileOK() *DeleteFlavorProfileOK {
-	return &DeleteFlavorProfileOK{}
+// NewDeleteFlavorProfileNoContent creates a DeleteFlavorProfileNoContent with default headers values
+func NewDeleteFlavorProfileNoContent() *DeleteFlavorProfileNoContent {
+	return &DeleteFlavorProfileNoContent{}
 }
 
-/*DeleteFlavorProfileOK handles this case with default header values.
+/*DeleteFlavorProfileNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
-type DeleteFlavorProfileOK struct {
+type DeleteFlavorProfileNoContent struct {
 }
 
-func (o *DeleteFlavorProfileOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/flavor-profiles/{id}][%d] deleteFlavorProfileOK ", 200)
+func (o *DeleteFlavorProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/flavor-profiles/{id}][%d] deleteFlavorProfileNoContent ", 204)
 }
 
-func (o *DeleteFlavorProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteFlavorProfileNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

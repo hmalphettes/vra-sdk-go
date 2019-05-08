@@ -209,7 +209,7 @@ DeleteAwsCloudAccount deletes an a w s cloud account
 
 Delete an AWS cloud account with a given id
 */
-func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*DeleteAwsCloudAccountOK, error) {
+func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*DeleteAwsCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAwsCloudAccountParams()
@@ -230,7 +230,7 @@ func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*De
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteAwsCloudAccountOK), nil
+	return result.(*DeleteAwsCloudAccountNoContent), nil
 
 }
 
@@ -239,7 +239,7 @@ DeleteAzureCloudAccount deletes an azure cloud account
 
 Delete an Azure Cloud Account with a given id
 */
-func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) (*DeleteAzureCloudAccountOK, error) {
+func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) (*DeleteAzureCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAzureCloudAccountParams()
@@ -260,7 +260,7 @@ func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteAzureCloudAccountOK), nil
+	return result.(*DeleteAzureCloudAccountNoContent), nil
 
 }
 
@@ -269,7 +269,7 @@ DeleteCloudAccount deletes a cloud account
 
 Delete a cloud account with a given id
 */
-func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCloudAccountOK, error) {
+func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCloudAccountParams()
@@ -290,67 +290,67 @@ func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCl
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteCloudAccountOK), nil
+	return result.(*DeleteCloudAccountNoContent), nil
 
 }
 
 /*
-DeleteNsxTCloudAccount deletes a n s x t cloud account
+DeleteCloudAccountNsxT deletes a n s x t cloud account
 
 Delete a NSX-T cloud account with a given id
 */
-func (a *Client) DeleteNsxTCloudAccount(params *DeleteNsxTCloudAccountParams) (*DeleteNsxTCloudAccountOK, error) {
+func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams) (*DeleteCloudAccountNsxTNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteNsxTCloudAccountParams()
+		params = NewDeleteCloudAccountNsxTParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteNsxTCloudAccount",
+		ID:                 "deleteCloudAccountNsx-T",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-t/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteNsxTCloudAccountReader{formats: a.formats},
+		Reader:             &DeleteCloudAccountNsxTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteNsxTCloudAccountOK), nil
+	return result.(*DeleteCloudAccountNsxTNoContent), nil
 
 }
 
 /*
-DeleteNsxVCloudAccount deletes a n s v v cloud account
+DeleteCloudAccountNsxV deletes a n s v v cloud account
 
 Delete a NSV-V cloud account with a given id
 */
-func (a *Client) DeleteNsxVCloudAccount(params *DeleteNsxVCloudAccountParams) (*DeleteNsxVCloudAccountOK, error) {
+func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams) (*DeleteCloudAccountNsxVNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteNsxVCloudAccountParams()
+		params = NewDeleteCloudAccountNsxVParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteNsxVCloudAccount",
+		ID:                 "deleteCloudAccountNsx-V",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-v/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteNsxVCloudAccountReader{formats: a.formats},
+		Reader:             &DeleteCloudAccountNsxVReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteNsxVCloudAccountOK), nil
+	return result.(*DeleteCloudAccountNsxVNoContent), nil
 
 }
 
@@ -359,7 +359,7 @@ DeleteVSphereCloudAccount deletes a v sphere cloud account
 
 Delete a vSphere Cloud Account with a given id
 */
-func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams) (*DeleteVSphereCloudAccountOK, error) {
+func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams) (*DeleteVSphereCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVSphereCloudAccountParams()
@@ -380,7 +380,7 @@ func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteVSphereCloudAccountOK), nil
+	return result.(*DeleteVSphereCloudAccountNoContent), nil
 
 }
 

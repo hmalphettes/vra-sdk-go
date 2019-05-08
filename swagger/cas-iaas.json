@@ -549,8 +549,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -756,8 +756,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -895,7 +895,7 @@
                 ],
                 "summary": "Delete a NSX-T cloud account",
                 "description": "Delete a NSX-T cloud account with a given id",
-                "operationId": "deleteNsxTCloudAccount",
+                "operationId": "deleteCloudAccountNsx-T",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -917,8 +917,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -1056,7 +1056,7 @@
                 ],
                 "summary": "Delete a NSV-V cloud account",
                 "description": "Delete a NSV-V cloud account with a given id",
-                "operationId": "deleteNsxVCloudAccount",
+                "operationId": "deleteCloudAccountNsx-V",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1078,8 +1078,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -1285,8 +1285,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -1414,8 +1414,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -1617,8 +1617,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -2295,8 +2295,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -2555,8 +2555,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -4149,8 +4149,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -4362,7 +4362,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation",
+                        "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/RequestTracker"
                         }
@@ -4532,8 +4532,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "204": {
                         "description": "successful operation"
@@ -4543,6 +4543,9 @@
                     },
                     "404": {
                         "description": "Not Found"
+                    },
+                    "409": {
+                        "description": "Conflict, when the project is in use"
                     }
                 }
             },
@@ -5104,8 +5107,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -5312,8 +5315,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -5520,8 +5523,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -5701,8 +5704,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -5903,8 +5906,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -8242,6 +8245,11 @@
                     "type": "string",
                     "example": "i-cfe4-e241-e53b-756a9a2e25d2",
                     "description": "External entity Id on the provider side."
+                },
+                "externalRegionId": {
+                    "type": "string",
+                    "example": "Datacenter:datacenter-2",
+                    "description": "Id of datacenter in which the storage policy is present."
                 },
                 "cloudAccountIds": {
                     "type": "array",

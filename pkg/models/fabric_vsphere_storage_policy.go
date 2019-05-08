@@ -34,6 +34,9 @@ type FabricVsphereStoragePolicy struct {
 	// External entity Id on the provider side.
 	ExternalID string `json:"externalId,omitempty"`
 
+	// Id of datacenter in which the storage policy is present.
+	ExternalRegionID string `json:"externalRegionId,omitempty"`
+
 	// The id of this resource instance
 	// Required: true
 	ID *string `json:"id"`

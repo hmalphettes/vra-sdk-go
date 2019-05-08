@@ -58,7 +58,7 @@ func NewDeleteNetworkOK() *DeleteNetworkOK {
 
 /*DeleteNetworkOK handles this case with default header values.
 
-successful operation
+OK
 */
 type DeleteNetworkOK struct {
 	Payload *models.RequestTracker

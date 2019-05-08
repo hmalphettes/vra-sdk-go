@@ -22,8 +22,8 @@ type DeleteVSphereStorageProfileReader struct {
 func (o *DeleteVSphereStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteVSphereStorageProfileOK()
+	case 204:
+		result := NewDeleteVSphereStorageProfileNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +48,23 @@ func (o *DeleteVSphereStorageProfileReader) ReadResponse(response runtime.Client
 	}
 }
 
-// NewDeleteVSphereStorageProfileOK creates a DeleteVSphereStorageProfileOK with default headers values
-func NewDeleteVSphereStorageProfileOK() *DeleteVSphereStorageProfileOK {
-	return &DeleteVSphereStorageProfileOK{}
+// NewDeleteVSphereStorageProfileNoContent creates a DeleteVSphereStorageProfileNoContent with default headers values
+func NewDeleteVSphereStorageProfileNoContent() *DeleteVSphereStorageProfileNoContent {
+	return &DeleteVSphereStorageProfileNoContent{}
 }
 
-/*DeleteVSphereStorageProfileOK handles this case with default header values.
+/*DeleteVSphereStorageProfileNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
-type DeleteVSphereStorageProfileOK struct {
+type DeleteVSphereStorageProfileNoContent struct {
 }
 
-func (o *DeleteVSphereStorageProfileOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-vsphere/{id}][%d] deleteVSphereStorageProfileOK ", 200)
+func (o *DeleteVSphereStorageProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-vsphere/{id}][%d] deleteVSphereStorageProfileNoContent ", 204)
 }
 
-func (o *DeleteVSphereStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteVSphereStorageProfileNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

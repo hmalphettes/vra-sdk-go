@@ -149,7 +149,7 @@ DeleteAwsStorageProfile deletes a w s storage profile
 
 Delete AWS storage profile with a given id
 */
-func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) (*DeleteAwsStorageProfileOK, error) {
+func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) (*DeleteAwsStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAwsStorageProfileParams()
@@ -170,7 +170,7 @@ func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteAwsStorageProfileOK), nil
+	return result.(*DeleteAwsStorageProfileNoContent), nil
 
 }
 
@@ -179,7 +179,7 @@ DeleteAzureStorageProfile deletes azure storage profile
 
 Delete Azure storage profile with a given id
 */
-func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfileParams) (*DeleteAzureStorageProfileOK, error) {
+func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfileParams) (*DeleteAzureStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAzureStorageProfileParams()
@@ -200,7 +200,7 @@ func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfilePara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteAzureStorageProfileOK), nil
+	return result.(*DeleteAzureStorageProfileNoContent), nil
 
 }
 
@@ -209,7 +209,7 @@ DeleteStorageProfile deletes storage profile
 
 Delete storage profile with a given id
 */
-func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams) (*DeleteStorageProfileOK, error) {
+func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams) (*DeleteStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteStorageProfileParams()
@@ -230,7 +230,7 @@ func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams) (*Dele
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteStorageProfileOK), nil
+	return result.(*DeleteStorageProfileNoContent), nil
 
 }
 
@@ -239,7 +239,7 @@ DeleteVSphereStorageProfile deletes v sphere storage profile
 
 Delete vSphere storage profile with a given id
 */
-func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfileParams) (*DeleteVSphereStorageProfileOK, error) {
+func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfileParams) (*DeleteVSphereStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVSphereStorageProfileParams()
@@ -260,7 +260,7 @@ func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfile
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteVSphereStorageProfileOK), nil
+	return result.(*DeleteVSphereStorageProfileNoContent), nil
 
 }
 

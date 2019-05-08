@@ -59,7 +59,7 @@ DeleteImageProfile deletes image profile
 
 Delete image profile with a given id
 */
-func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteImageProfileOK, error) {
+func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteImageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteImageProfileParams()
@@ -80,7 +80,7 @@ func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteIm
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteImageProfileOK), nil
+	return result.(*DeleteImageProfileNoContent), nil
 
 }
 

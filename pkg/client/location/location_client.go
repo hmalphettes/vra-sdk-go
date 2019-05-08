@@ -59,7 +59,7 @@ DeleteZone deletes a zone
 
 Delete a zone
 */
-func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneOK, error) {
+func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteZoneParams()
@@ -80,7 +80,7 @@ func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneOK, error) {
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteZoneOK), nil
+	return result.(*DeleteZoneNoContent), nil
 
 }
 

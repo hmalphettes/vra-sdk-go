@@ -22,8 +22,8 @@ type DeleteVSphereCloudAccountReader struct {
 func (o *DeleteVSphereCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteVSphereCloudAccountOK()
+	case 204:
+		result := NewDeleteVSphereCloudAccountNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +48,23 @@ func (o *DeleteVSphereCloudAccountReader) ReadResponse(response runtime.ClientRe
 	}
 }
 
-// NewDeleteVSphereCloudAccountOK creates a DeleteVSphereCloudAccountOK with default headers values
-func NewDeleteVSphereCloudAccountOK() *DeleteVSphereCloudAccountOK {
-	return &DeleteVSphereCloudAccountOK{}
+// NewDeleteVSphereCloudAccountNoContent creates a DeleteVSphereCloudAccountNoContent with default headers values
+func NewDeleteVSphereCloudAccountNoContent() *DeleteVSphereCloudAccountNoContent {
+	return &DeleteVSphereCloudAccountNoContent{}
 }
 
-/*DeleteVSphereCloudAccountOK handles this case with default header values.
+/*DeleteVSphereCloudAccountNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
-type DeleteVSphereCloudAccountOK struct {
+type DeleteVSphereCloudAccountNoContent struct {
 }
 
-func (o *DeleteVSphereCloudAccountOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountOK ", 200)
+func (o *DeleteVSphereCloudAccountNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountNoContent ", 204)
 }
 
-func (o *DeleteVSphereCloudAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteVSphereCloudAccountNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

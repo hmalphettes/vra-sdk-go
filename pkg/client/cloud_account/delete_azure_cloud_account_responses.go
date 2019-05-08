@@ -22,8 +22,8 @@ type DeleteAzureCloudAccountReader struct {
 func (o *DeleteAzureCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteAzureCloudAccountOK()
+	case 204:
+		result := NewDeleteAzureCloudAccountNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +48,23 @@ func (o *DeleteAzureCloudAccountReader) ReadResponse(response runtime.ClientResp
 	}
 }
 
-// NewDeleteAzureCloudAccountOK creates a DeleteAzureCloudAccountOK with default headers values
-func NewDeleteAzureCloudAccountOK() *DeleteAzureCloudAccountOK {
-	return &DeleteAzureCloudAccountOK{}
+// NewDeleteAzureCloudAccountNoContent creates a DeleteAzureCloudAccountNoContent with default headers values
+func NewDeleteAzureCloudAccountNoContent() *DeleteAzureCloudAccountNoContent {
+	return &DeleteAzureCloudAccountNoContent{}
 }
 
-/*DeleteAzureCloudAccountOK handles this case with default header values.
+/*DeleteAzureCloudAccountNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
-type DeleteAzureCloudAccountOK struct {
+type DeleteAzureCloudAccountNoContent struct {
 }
 
-func (o *DeleteAzureCloudAccountOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-azure/{id}][%d] deleteAzureCloudAccountOK ", 200)
+func (o *DeleteAzureCloudAccountNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-azure/{id}][%d] deleteAzureCloudAccountNoContent ", 204)
 }
 
-func (o *DeleteAzureCloudAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteAzureCloudAccountNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

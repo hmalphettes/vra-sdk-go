@@ -22,8 +22,8 @@ type DeleteZoneReader struct {
 func (o *DeleteZoneReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteZoneOK()
+	case 204:
+		result := NewDeleteZoneNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +48,23 @@ func (o *DeleteZoneReader) ReadResponse(response runtime.ClientResponse, consume
 	}
 }
 
-// NewDeleteZoneOK creates a DeleteZoneOK with default headers values
-func NewDeleteZoneOK() *DeleteZoneOK {
-	return &DeleteZoneOK{}
+// NewDeleteZoneNoContent creates a DeleteZoneNoContent with default headers values
+func NewDeleteZoneNoContent() *DeleteZoneNoContent {
+	return &DeleteZoneNoContent{}
 }
 
-/*DeleteZoneOK handles this case with default header values.
+/*DeleteZoneNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
-type DeleteZoneOK struct {
+type DeleteZoneNoContent struct {
 }
 
-func (o *DeleteZoneOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/zones/{id}][%d] deleteZoneOK ", 200)
+func (o *DeleteZoneNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/zones/{id}][%d] deleteZoneNoContent ", 204)
 }
 
-func (o *DeleteZoneOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteZoneNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
