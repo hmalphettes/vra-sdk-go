@@ -7,10 +7,13 @@ package fabric_network
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
 // UpdateFabricNetworkReader is a Reader for the UpdateFabricNetwork structure.
@@ -21,6 +24,13 @@ type UpdateFabricNetworkReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateFabricNetworkReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+
+	case 200:
+		result := NewUpdateFabricNetworkOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 
 	case 403:
 		result := NewUpdateFabricNetworkForbidden()
@@ -39,6 +49,35 @@ func (o *UpdateFabricNetworkReader) ReadResponse(response runtime.ClientResponse
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewUpdateFabricNetworkOK creates a UpdateFabricNetworkOK with default headers values
+func NewUpdateFabricNetworkOK() *UpdateFabricNetworkOK {
+	return &UpdateFabricNetworkOK{}
+}
+
+/*UpdateFabricNetworkOK handles this case with default header values.
+
+successful operation
+*/
+type UpdateFabricNetworkOK struct {
+	Payload *models.FabricNetwork
+}
+
+func (o *UpdateFabricNetworkOK) Error() string {
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks/{id}][%d] updateFabricNetworkOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateFabricNetworkOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.FabricNetwork)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
 // NewUpdateFabricNetworkForbidden creates a UpdateFabricNetworkForbidden with default headers values

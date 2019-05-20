@@ -89,13 +89,13 @@ UpdateFabricNetwork updates fabric network
 
 Update fabric network. Only tag updates are supported.
 */
-func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams) error {
+func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams) (*UpdateFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateFabricNetworkParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "updateFabricNetwork",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/fabric-networks/{id}",
@@ -108,9 +108,9 @@ func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*UpdateFabricNetworkOK), nil
 
 }
 

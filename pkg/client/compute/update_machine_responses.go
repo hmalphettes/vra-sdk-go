@@ -7,10 +7,13 @@ package compute
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
 // UpdateMachineReader is a Reader for the UpdateMachine structure.
@@ -58,13 +61,21 @@ func NewUpdateMachineOK() *UpdateMachineOK {
 successful operation
 */
 type UpdateMachineOK struct {
+	Payload *models.Machine
 }
 
 func (o *UpdateMachineOK) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineOK ", 200)
+	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineOK  %+v", 200, o.Payload)
 }
 
 func (o *UpdateMachineOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Machine)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

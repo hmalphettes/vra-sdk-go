@@ -62,7 +62,7 @@ func NewDeleteProjectNoContent() *DeleteProjectNoContent {
 
 /*DeleteProjectNoContent handles this case with default header values.
 
-successful operation
+No Content
 */
 type DeleteProjectNoContent struct {
 }
