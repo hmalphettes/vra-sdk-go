@@ -61,6 +61,11 @@ for the get network domains operation typically these are written to a http.Requ
 */
 type GetNetworkDomainsParams struct {
 
+	/*NrDollarFilter
+	  Add a filter to return limited results
+
+	*/
+	DollarFilter *string
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
@@ -105,6 +110,17 @@ func (o *GetNetworkDomainsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarFilter adds the dollarFilter to the get network domains params
+func (o *GetNetworkDomainsParams) WithDollarFilter(dollarFilter *string) *GetNetworkDomainsParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get network domains params
+func (o *GetNetworkDomainsParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
 // WithAPIVersion adds the aPIVersion to the get network domains params
 func (o *GetNetworkDomainsParams) WithAPIVersion(aPIVersion string) *GetNetworkDomainsParams {
 	o.SetAPIVersion(aPIVersion)
@@ -123,6 +139,22 @@ func (o *GetNetworkDomainsParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
+
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrNrDollarFilter string
+		if o.DollarFilter != nil {
+			qrNrDollarFilter = *o.DollarFilter
+		}
+		qNrDollarFilter := qrNrDollarFilter
+		if qNrDollarFilter != "" {
+			if err := r.SetQueryParam("$filter", qNrDollarFilter); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// query param apiVersion
 	qrAPIVersion := o.APIVersion
