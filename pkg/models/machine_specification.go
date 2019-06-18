@@ -31,7 +31,7 @@ type MachineSpecification struct {
 	// deployment Id
 	DeploymentID string `json:"deploymentId,omitempty"`
 
-	// A human-friendly description.
+	// Describes machine within the scope of your organization and is not propagated to the cloud
 	Description string `json:"description,omitempty"`
 
 	// A set of disk specifications for this machine.

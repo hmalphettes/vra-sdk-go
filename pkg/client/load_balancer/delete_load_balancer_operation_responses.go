@@ -7,10 +7,13 @@ package load_balancer
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
 // DeleteLoadBalancerOperationReader is a Reader for the DeleteLoadBalancerOperation structure.
@@ -22,8 +25,8 @@ type DeleteLoadBalancerOperationReader struct {
 func (o *DeleteLoadBalancerOperationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteLoadBalancerOperationOK()
+	case 202:
+		result := NewDeleteLoadBalancerOperationAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +51,31 @@ func (o *DeleteLoadBalancerOperationReader) ReadResponse(response runtime.Client
 	}
 }
 
-// NewDeleteLoadBalancerOperationOK creates a DeleteLoadBalancerOperationOK with default headers values
-func NewDeleteLoadBalancerOperationOK() *DeleteLoadBalancerOperationOK {
-	return &DeleteLoadBalancerOperationOK{}
+// NewDeleteLoadBalancerOperationAccepted creates a DeleteLoadBalancerOperationAccepted with default headers values
+func NewDeleteLoadBalancerOperationAccepted() *DeleteLoadBalancerOperationAccepted {
+	return &DeleteLoadBalancerOperationAccepted{}
 }
 
-/*DeleteLoadBalancerOperationOK handles this case with default header values.
+/*DeleteLoadBalancerOperationAccepted handles this case with default header values.
 
 successful operation
 */
-type DeleteLoadBalancerOperationOK struct {
+type DeleteLoadBalancerOperationAccepted struct {
+	Payload *models.RequestTracker
 }
 
-func (o *DeleteLoadBalancerOperationOK) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationOK ", 200)
+func (o *DeleteLoadBalancerOperationAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationAccepted  %+v", 202, o.Payload)
 }
 
-func (o *DeleteLoadBalancerOperationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteLoadBalancerOperationAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

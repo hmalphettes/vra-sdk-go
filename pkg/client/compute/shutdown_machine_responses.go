@@ -7,10 +7,13 @@ package compute
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
 // ShutdownMachineReader is a Reader for the ShutdownMachine structure.
@@ -21,6 +24,13 @@ type ShutdownMachineReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ShutdownMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+
+	case 202:
+		result := NewShutdownMachineAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 
 	case 403:
 		result := NewShutdownMachineForbidden()
@@ -39,6 +49,35 @@ func (o *ShutdownMachineReader) ReadResponse(response runtime.ClientResponse, co
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewShutdownMachineAccepted creates a ShutdownMachineAccepted with default headers values
+func NewShutdownMachineAccepted() *ShutdownMachineAccepted {
+	return &ShutdownMachineAccepted{}
+}
+
+/*ShutdownMachineAccepted handles this case with default header values.
+
+successful operation
+*/
+type ShutdownMachineAccepted struct {
+	Payload *models.RequestTracker
+}
+
+func (o *ShutdownMachineAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineAccepted  %+v", 202, o.Payload)
+}
+
+func (o *ShutdownMachineAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
 // NewShutdownMachineForbidden creates a ShutdownMachineForbidden with default headers values

@@ -67,7 +67,7 @@ type CreateAzureCloudAccountParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*Body
 	  CloudAccountAzure specification
 
@@ -113,13 +113,13 @@ func (o *CreateAzureCloudAccountParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the create azure cloud account params
-func (o *CreateAzureCloudAccountParams) WithAPIVersion(aPIVersion string) *CreateAzureCloudAccountParams {
+func (o *CreateAzureCloudAccountParams) WithAPIVersion(aPIVersion *string) *CreateAzureCloudAccountParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the create azure cloud account params
-func (o *CreateAzureCloudAccountParams) SetAPIVersion(aPIVersion string) {
+func (o *CreateAzureCloudAccountParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -142,13 +142,20 @@ func (o *CreateAzureCloudAccountParams) WriteToRequest(r runtime.ClientRequest, 
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if o.Body != nil {

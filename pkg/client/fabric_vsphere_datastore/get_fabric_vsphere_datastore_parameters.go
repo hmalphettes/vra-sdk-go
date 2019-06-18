@@ -65,7 +65,7 @@ type GetFabricVSphereDatastoreParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*ID
 	  The ID of the Fabric vSphere Datastore.
 
@@ -111,13 +111,13 @@ func (o *GetFabricVSphereDatastoreParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get fabric v sphere datastore params
-func (o *GetFabricVSphereDatastoreParams) WithAPIVersion(aPIVersion string) *GetFabricVSphereDatastoreParams {
+func (o *GetFabricVSphereDatastoreParams) WithAPIVersion(aPIVersion *string) *GetFabricVSphereDatastoreParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get fabric v sphere datastore params
-func (o *GetFabricVSphereDatastoreParams) SetAPIVersion(aPIVersion string) {
+func (o *GetFabricVSphereDatastoreParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -140,13 +140,20 @@ func (o *GetFabricVSphereDatastoreParams) WriteToRequest(r runtime.ClientRequest
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	// path param id

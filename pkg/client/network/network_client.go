@@ -29,7 +29,7 @@ CreateNetwork creates network
 
 Provision a new network based on the passed in constraints. The network should be destroyed after the machine is destroyed to free up resources.
 */
-func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkCreated, error) {
+func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNetworkParams()
@@ -50,7 +50,7 @@ func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkCreat
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateNetworkCreated), nil
+	return result.(*CreateNetworkAccepted), nil
 
 }
 
@@ -59,7 +59,7 @@ DeleteNetwork deletes a network
 
 Delete a network with a given id
 */
-func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkOK, error) {
+func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkOK, *DeleteNetworkAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNetworkParams()
@@ -78,9 +78,15 @@ func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkOK, e
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	return result.(*DeleteNetworkOK), nil
+	switch value := result.(type) {
+	case *DeleteNetworkOK:
+		return value, nil, nil
+	case *DeleteNetworkAccepted:
+		return nil, value, nil
+	}
+	return nil, nil, nil
 
 }
 

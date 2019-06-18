@@ -25,8 +25,8 @@ type DeleteLoadBalancerReader struct {
 func (o *DeleteLoadBalancerReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteLoadBalancerOK()
+	case 202:
+		result := NewDeleteLoadBalancerAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *DeleteLoadBalancerReader) ReadResponse(response runtime.ClientResponse,
 	}
 }
 
-// NewDeleteLoadBalancerOK creates a DeleteLoadBalancerOK with default headers values
-func NewDeleteLoadBalancerOK() *DeleteLoadBalancerOK {
-	return &DeleteLoadBalancerOK{}
+// NewDeleteLoadBalancerAccepted creates a DeleteLoadBalancerAccepted with default headers values
+func NewDeleteLoadBalancerAccepted() *DeleteLoadBalancerAccepted {
+	return &DeleteLoadBalancerAccepted{}
 }
 
-/*DeleteLoadBalancerOK handles this case with default header values.
+/*DeleteLoadBalancerAccepted handles this case with default header values.
 
 successful operation
 */
-type DeleteLoadBalancerOK struct {
+type DeleteLoadBalancerAccepted struct {
 	Payload *models.RequestTracker
 }
 
-func (o *DeleteLoadBalancerOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/load-balancers/{id}][%d] deleteLoadBalancerOK  %+v", 200, o.Payload)
+func (o *DeleteLoadBalancerAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/load-balancers/{id}][%d] deleteLoadBalancerAccepted  %+v", 202, o.Payload)
 }
 
-func (o *DeleteLoadBalancerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteLoadBalancerAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

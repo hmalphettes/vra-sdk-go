@@ -29,7 +29,7 @@ CreateLoadBalancer creates load balancer
 
 Create load balancer
 */
-func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLoadBalancerCreated, error) {
+func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateLoadBalancerParams()
@@ -50,7 +50,7 @@ func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLo
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateLoadBalancerCreated), nil
+	return result.(*CreateLoadBalancerAccepted), nil
 
 }
 
@@ -59,7 +59,7 @@ DeleteLoadBalancer deletes load balancer
 
 Delete load balancer with a given id
 */
-func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLoadBalancerOK, error) {
+func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteLoadBalancerParams()
@@ -80,7 +80,7 @@ func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLo
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteLoadBalancerOK), nil
+	return result.(*DeleteLoadBalancerAccepted), nil
 
 }
 
@@ -89,7 +89,7 @@ DeleteLoadBalancerOperation deletes operation for load balancer
 
 Second day delete operation for load balancer
 */
-func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperationParams) (*DeleteLoadBalancerOperationOK, error) {
+func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperationParams) (*DeleteLoadBalancerOperationAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteLoadBalancerOperationParams()
@@ -110,7 +110,7 @@ func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperation
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteLoadBalancerOperationOK), nil
+	return result.(*DeleteLoadBalancerOperationAccepted), nil
 
 }
 
@@ -179,13 +179,13 @@ ScaleLoadBalancer scales operation for load balancer
 
 Second day scale operation for load balancer
 */
-func (a *Client) ScaleLoadBalancer(params *ScaleLoadBalancerParams) error {
+func (a *Client) ScaleLoadBalancer(params *ScaleLoadBalancerParams) (*ScaleLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewScaleLoadBalancerParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "scaleLoadBalancer",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/load-balancers/{id}/operations/scale",
@@ -198,9 +198,9 @@ func (a *Client) ScaleLoadBalancer(params *ScaleLoadBalancerParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*ScaleLoadBalancerAccepted), nil
 
 }
 

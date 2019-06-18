@@ -25,8 +25,8 @@ type DeleteMachineReader struct {
 func (o *DeleteMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteMachineOK()
+	case 202:
+		result := NewDeleteMachineAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *DeleteMachineReader) ReadResponse(response runtime.ClientResponse, cons
 	}
 }
 
-// NewDeleteMachineOK creates a DeleteMachineOK with default headers values
-func NewDeleteMachineOK() *DeleteMachineOK {
-	return &DeleteMachineOK{}
+// NewDeleteMachineAccepted creates a DeleteMachineAccepted with default headers values
+func NewDeleteMachineAccepted() *DeleteMachineAccepted {
+	return &DeleteMachineAccepted{}
 }
 
-/*DeleteMachineOK handles this case with default header values.
+/*DeleteMachineAccepted handles this case with default header values.
 
 successful operation
 */
-type DeleteMachineOK struct {
+type DeleteMachineAccepted struct {
 	Payload *models.RequestTracker
 }
 
-func (o *DeleteMachineOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineOK  %+v", 200, o.Payload)
+func (o *DeleteMachineAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineAccepted  %+v", 202, o.Payload)
 }
 
-func (o *DeleteMachineOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteMachineAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

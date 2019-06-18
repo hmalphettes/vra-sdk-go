@@ -67,12 +67,12 @@ type UpdateCloudAccountParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*Body
-	  CloudAccount instance
+	  Cloud account details to be updated
 
 	*/
-	Body *models.CloudAccountSpecification
+	Body *models.UpdateCloudAccountSpecification
 	/*ID
 	  The ID of the cloudAccount
 
@@ -118,24 +118,24 @@ func (o *UpdateCloudAccountParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the update cloud account params
-func (o *UpdateCloudAccountParams) WithAPIVersion(aPIVersion string) *UpdateCloudAccountParams {
+func (o *UpdateCloudAccountParams) WithAPIVersion(aPIVersion *string) *UpdateCloudAccountParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the update cloud account params
-func (o *UpdateCloudAccountParams) SetAPIVersion(aPIVersion string) {
+func (o *UpdateCloudAccountParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
 // WithBody adds the body to the update cloud account params
-func (o *UpdateCloudAccountParams) WithBody(body *models.CloudAccountSpecification) *UpdateCloudAccountParams {
+func (o *UpdateCloudAccountParams) WithBody(body *models.UpdateCloudAccountSpecification) *UpdateCloudAccountParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the update cloud account params
-func (o *UpdateCloudAccountParams) SetBody(body *models.CloudAccountSpecification) {
+func (o *UpdateCloudAccountParams) SetBody(body *models.UpdateCloudAccountSpecification) {
 	o.Body = body
 }
 
@@ -158,13 +158,20 @@ func (o *UpdateCloudAccountParams) WriteToRequest(r runtime.ClientRequest, reg s
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if o.Body != nil {

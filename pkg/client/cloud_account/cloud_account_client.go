@@ -865,6 +865,66 @@ func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) 
 }
 
 /*
+UpdateAwsCloudAccount updates a w s cloud account
+
+Update AWS cloud account
+*/
+func (a *Client) UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams) (*UpdateAwsCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateAwsCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updateAwsCloudAccount",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/cloud-accounts-aws/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateAwsCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UpdateAwsCloudAccountOK), nil
+
+}
+
+/*
+UpdateAzureCloudAccount updates azure cloud account
+
+Update Azure cloud account
+*/
+func (a *Client) UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams) (*UpdateAzureCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateAzureCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updateAzureCloudAccount",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/cloud-accounts-azure/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateAzureCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UpdateAzureCloudAccountOK), nil
+
+}
+
+/*
 UpdateCloudAccount updates cloud account
 
 Update a single CloudAccount
@@ -891,6 +951,96 @@ func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams) (*UpdateCl
 		return nil, err
 	}
 	return result.(*UpdateCloudAccountOK), nil
+
+}
+
+/*
+UpdateNsxTCloudAccount updates n s x t cloud account
+
+Update NSX-T cloud account
+*/
+func (a *Client) UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams) (*UpdateNsxTCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateNsxTCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updateNsxTCloudAccount",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/cloud-accounts-nsx-t/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateNsxTCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UpdateNsxTCloudAccountOK), nil
+
+}
+
+/*
+UpdateNsxVCloudAccount updates n s x v cloud account
+
+Update NSX-V cloud account
+*/
+func (a *Client) UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams) (*UpdateNsxVCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateNsxVCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updateNsxVCloudAccount",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/cloud-accounts-nsx-v/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateNsxVCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UpdateNsxVCloudAccountOK), nil
+
+}
+
+/*
+UpdateVSphereCloudAccount updates v sphere cloud account
+
+Update vSphere cloud account
+*/
+func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountParams) (*UpdateVSphereCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVSphereCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updateVSphereCloudAccount",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/cloud-accounts-vsphere/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateVSphereCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UpdateVSphereCloudAccountOK), nil
 
 }
 

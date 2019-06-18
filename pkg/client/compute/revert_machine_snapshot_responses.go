@@ -7,10 +7,13 @@ package compute
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
 // RevertMachineSnapshotReader is a Reader for the RevertMachineSnapshot structure.
@@ -21,6 +24,13 @@ type RevertMachineSnapshotReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *RevertMachineSnapshotReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+
+	case 202:
+		result := NewRevertMachineSnapshotAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 
 	case 403:
 		result := NewRevertMachineSnapshotForbidden()
@@ -39,6 +49,35 @@ func (o *RevertMachineSnapshotReader) ReadResponse(response runtime.ClientRespon
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewRevertMachineSnapshotAccepted creates a RevertMachineSnapshotAccepted with default headers values
+func NewRevertMachineSnapshotAccepted() *RevertMachineSnapshotAccepted {
+	return &RevertMachineSnapshotAccepted{}
+}
+
+/*RevertMachineSnapshotAccepted handles this case with default header values.
+
+successful operation
+*/
+type RevertMachineSnapshotAccepted struct {
+	Payload *models.RequestTracker
+}
+
+func (o *RevertMachineSnapshotAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert][%d] revertMachineSnapshotAccepted  %+v", 202, o.Payload)
+}
+
+func (o *RevertMachineSnapshotAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
 // NewRevertMachineSnapshotForbidden creates a RevertMachineSnapshotForbidden with default headers values

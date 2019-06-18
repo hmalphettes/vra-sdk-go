@@ -7,10 +7,13 @@ package compute
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
 // DeleteMachineSnapshotReader is a Reader for the DeleteMachineSnapshot structure.
@@ -22,8 +25,8 @@ type DeleteMachineSnapshotReader struct {
 func (o *DeleteMachineSnapshotReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteMachineSnapshotOK()
+	case 202:
+		result := NewDeleteMachineSnapshotAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,23 +51,31 @@ func (o *DeleteMachineSnapshotReader) ReadResponse(response runtime.ClientRespon
 	}
 }
 
-// NewDeleteMachineSnapshotOK creates a DeleteMachineSnapshotOK with default headers values
-func NewDeleteMachineSnapshotOK() *DeleteMachineSnapshotOK {
-	return &DeleteMachineSnapshotOK{}
+// NewDeleteMachineSnapshotAccepted creates a DeleteMachineSnapshotAccepted with default headers values
+func NewDeleteMachineSnapshotAccepted() *DeleteMachineSnapshotAccepted {
+	return &DeleteMachineSnapshotAccepted{}
 }
 
-/*DeleteMachineSnapshotOK handles this case with default header values.
+/*DeleteMachineSnapshotAccepted handles this case with default header values.
 
 successful operation
 */
-type DeleteMachineSnapshotOK struct {
+type DeleteMachineSnapshotAccepted struct {
+	Payload *models.RequestTracker
 }
 
-func (o *DeleteMachineSnapshotOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{id1}][%d] deleteMachineSnapshotOK ", 200)
+func (o *DeleteMachineSnapshotAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{id1}][%d] deleteMachineSnapshotAccepted  %+v", 202, o.Payload)
 }
 
-func (o *DeleteMachineSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteMachineSnapshotAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
