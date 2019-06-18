@@ -2051,6 +2051,13 @@
                 ],
                 "parameters": [
                     {
+                       "name": "$filter",
+                       "in": "query",
+                       "description": "Add a filter to return limited results",
+                       "required": false,
+                       "type": "string"
+                    },
+                    {
                         "name": "apiVersion",
                         "in": "query",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about",
@@ -2128,6 +2135,13 @@
                     "app/json"
                 ],
                 "parameters": [
+                    {
+                       "name": "$filter",
+                       "in": "query",
+                       "description": "Add a filter to return limited results",
+                       "required": false,
+                       "type": "string"
+                    },
                     {
                         "name": "apiVersion",
                         "in": "query",
@@ -4265,6 +4279,13 @@
                 ],
                 "parameters": [
                     {
+                       "name": "$filter",
+                       "in": "query",
+                       "description": "Add a filter to return limited results",
+                       "required": false,
+                       "type": "string"
+                    },
+                    {
                         "name": "apiVersion",
                         "in": "query",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about",
@@ -4729,6 +4750,13 @@
                 ],
                 "parameters": [
                     {
+                       "name": "$filter",
+                       "in": "query",
+                       "description": "Add a filter to return limited results",
+                       "required": false,
+                       "type": "string"
+                    },
+                    {
                         "name": "apiVersion",
                         "in": "query",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about",
@@ -5134,6 +5162,13 @@
                     "app/json"
                 ],
                 "parameters": [
+                    {
+                       "name": "$filter",
+                       "in": "query",
+                       "description": "Add a filter to return limited results",
+                       "required": false,
+                       "type": "string"
+                    },
                     {
                         "name": "apiVersion",
                         "in": "query",
